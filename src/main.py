@@ -1,1 +1,15 @@
-print('Where is batka_bot?')
+import discord
+from config import settings
+
+class MyClient(discord.Client):
+    async def on_ready(self):
+        print('Logged on as {0}!'.format(self.user))
+
+    async def on_message(self, message):
+        print('Message from {0.author}: {0.content}'.format(message))
+
+
+print('Batka is working')
+
+client = MyClient()
+client.run(settings['token'])
