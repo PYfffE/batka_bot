@@ -1,16 +1,15 @@
 import discord
+from discord.ext import commands
 from config import settings
 
+intents = discord.Intents.all()
+bot = commands.Bot(command_prefix=settings['prefix'], intents=intents)
 
-class MyClient(discord.Client):
-    async def on_ready(self):
-        print('Logged on as {0}!'.format(self.user))
-
-    async def on_message(self, message):
-        print('Message from {0.author}: {0.content}'.format(message))
-
+@bot.command()
+async def kawa_status(ctx):
+    for member in ctx.guild.members:
+        if member.id == 321358688432685059:
+            await ctx.send(member.status)
 
 print('Batka is working')
-
-client = MyClient()
-client.run(settings['token'])
+bot.run(settings['token'])
