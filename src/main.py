@@ -29,7 +29,7 @@ async def guilds_ids(ctx):
 async def mark_kawa(ctx):
     kawa = ctx.guild.get_member(321358688432685059)
     await kawa.add_roles(ctx.guild.get_role(767705402572800041))
-    await asyncio.sleep(3600)
+    await asyncio.sleep(1)
     await kawa.remove_roles(ctx.guild.get_role(767705402572800041))
 
 @bot.command()
@@ -59,7 +59,7 @@ async def on_message(message):
     if counter == 3:
         kawa = message.guild.get_member(321358688432685059)
         await kawa.add_roles(message.guild.get_role(767705402572800041))
-        await asyncio.sleep(3600)
+        await asyncio.sleep(1)
         await kawa.remove_roles(message.guild.get_role(767705402572800041))
         counter = 0
     await bot.process_commands(message)
